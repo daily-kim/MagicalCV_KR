@@ -1,8 +1,11 @@
 <div align="center">
   <img src="logo.png" width="600" />
-  Lato 한글 깨지는 문제로, font 추가후 cls 수정했습니다.
+  
+ 원본의 Lato 폰트가 한글 미지원인 문제로, 본고딕 추가후 클래스 수정했습니다.
 
-Font [source](https://fonts.google.com/noto/specimen/Noto+Sans+KR)
+ Font [source](https://fonts.google.com/noto/specimen/Noto+Sans+KR)
+
+
 <img src="https://capsule-render.vercel.app/api?type=transparent&fontColor=5066A8&text=Information&height=150&fontSize=60" width="500" /> <br />
 MagicalCV is a LaTeX template for a resume, inspired by many existing resumes'. It is made to be beautiful & also is compact to fit in as much data as you can.
 
