@@ -2,6 +2,8 @@
 %                                Declaration
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% https://github.com/themagicalmammal/Resume/tree/MagicalCV
+% Notosans KR 적용, 약간 에러 있을 수 있지만, 곧 수정할 예정
 \ProvidesClass{MagicalCV}[2022/05/31 CV class]
 \NeedsTeXFormat{LaTeX2e}
 \DeclareOption{print}{\def\@cv@print{}}
@@ -48,6 +50,8 @@
 \RequirePackage{fontawesome5}
 \RequirePackage{roboto}
 \RequirePackage[default,opentype]{sourcesanspro}
+
+
 % Needed for the photo ID
 \RequirePackage[skins]{tcolorbox}
 % Deal a paragraphs
@@ -66,7 +70,10 @@
 \RequirePackage{multirow,tabularx}
 % Change the page laout
 \RequirePackage{changepage}
-
+%%%
+\usepackage[sfdefault]{noto}
+\usepackage{fontspec}
+%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                   Icons
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -105,6 +112,7 @@
 \definecolor{date}{rgb}{0.345,0.345,0.345}
 \definecolor{headings}{rgb}{0.345,0.345,0.345}
 \definecolor{subheadings}{rgb}{0.345,0.345,0.345}
+\definecolor{subheadings_light}{rgb}{0.2,0.2,0.2}
 \definecolor{primary}{rgb}{128,128,128}
 % Gray-scale colors
 \definecolor{white}{HTML}{FFFFFF}
@@ -149,6 +157,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                        Configuration for fonts
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \usepackage{mathpazo}
+% \renewcommand{\footerfont}{\fontfamily{ppl}\selectfont}
+% \renewcommand{\bodyfont}{\fontfamily{ppl}\selectfont}
+% \renewcommand{\bodyfontlight}{\fontfamily{ppl}\selectfont}
 
 \newcommand*{\bodyfont}{\sourcesanspro}
 \newcommand*{\bodyfontlight}{\sourcesansprolight}
@@ -287,6 +299,7 @@
 \newcommand{\cvsection}[1]{%
   \vspace{\acvSectionTopSkip}
   \sectionstyle{#1}
+  \fontspec[Path = fonts/noto/]{noto-Reg.otf}\fontsize{10pt}{10pt}
   \phantomsection
   \color{sectiondivider}\vhrulefill{0.9pt}
 }
@@ -298,8 +311,8 @@
 \renewcommand\refname{\vskip -1.5cm}
 
 % Set main fonts
-\setmainfont[Color=primary, Path = fonts/lato/,BoldItalicFont=Lato-RegIta,BoldFont=Lato-Reg,ItalicFont=Lato-LigIta]{Lato-Lig}
-\setsansfont[Scale=MatchLowercase,Mapping=tex-text, Path = fonts/raleway/]{Raleway-ExtraLight}
+\setmainfont[Color=primary, Path = fonts/noto/,BoldFont=noto-Bol.otf]{noto-Lig.otf}
+\setsansfont[Scale=MatchLowercase,Mapping=tex-text, Path = fonts/noto/]{noto-Thi}
 
 % Date command
 \setlength{\TPHorizModule}{1mm}
@@ -329,23 +342,27 @@ Last Updated on \today
 
 % Headings command
 \titleformat{\section}{\color{headings}
-\scshape\fontspec[Path = fonts/lato/]{Lato-Lig}\fontsize{16pt}{24pt}\selectfont \raggedright\uppercase}{}{0em}{}
+\scshape\fontspec[Path = fonts/noto/]{noto-Lig.otf}\fontsize{16pt}{24pt}\selectfont\raggedright\uppercase}{}{0em}{}
 
 % Subheadings command
 \titleformat{\subsection}{
-\color{subheadings}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase}{}{0em}{}
+\color{subheadings_light}\fontspec[Path = fonts/noto/]{noto-Bol.otf}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase}{}{0em}{}
 
 \newcommand{\runsubsection}[1]{
-\color{subheadings}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {#1} \normalfont}
+\color{subheadings_light}\fontspec[Path = fonts/noto/]{noto-Bol.otf}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {#1} \normalfont}
 
 % Descriptors command
 \newcommand{\descript}[1]{
-\color{subheadings}\raggedright\scshape\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont {#1 \\} \normalfont}
+\color{subheadings}\raggedright\scshape\fontspec[Path = fonts/noto/,BoldFont=noto-Bol.otf]{noto-Med.otf}\fontsize{11pt}{13pt}\selectfont {#1 \\}}
 
 % Bullet Lists with fewer gaps command
 \newenvironment{tightemize}{
-\vspace{-\topsep}\begin{itemize}\itemsep1pt \parskip0pt \parsep0pt}
+\vspace{-\topsep}\fontspec[Path = fonts/noto/,BoldFont=noto-Reg.otf]{noto-Lig.otf}\fontsize{11pt}{13pt}
+\begin{itemize}\itemsep1pt \parskip0pt \parsep0pt}
 {\end{itemize}\vspace{-\topsep}}
+
+% \newenvironment{tightemize}{\vspace{-\topsep}\fontspec[Path = fonts/raleway/]{Raleway-Regular}\color{primary}\fontsize{10pt}{12pt}\begin{itemize}\itemsep1pt \parskip0pt \parsep0pt}{\end{itemize}\vspace{-\topsep}}
+
 
 % Setting up Hyperlink
 \hypersetup{%
